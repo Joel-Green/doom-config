@@ -60,8 +60,10 @@
   (display-battery-mode 1))
 
 
+(after! flycheck
 
-(setq flycheck-check-syntax-automatically '(mode-enabled save new-line idle-change))
+(setq flycheck-check-syntax-automatically '(mode-enabled save new-line idle-change)))
+
 
 
 
@@ -84,3 +86,5 @@
             (flycheck-mode t)
             (when (executable-find "eslint")
               (flycheck-select-checker 'javascript-eslint))))
+
+(setq projectile-enable-caching nil)
