@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ng model name
+# key: nng
+# --
+[(ngModel)]="${1}" name="${1}"

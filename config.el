@@ -9,6 +9,8 @@
 (setq user-full-name "Joel Green"
       user-mail-address "joelgreen737@gmail.com")
 
+;(setq tramp-default-method "ssh")
+
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
