@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: res.jsondata
+# key: rjd
+# --
+res.json({ message: "${1:message}",data:$0 ,success: ${1:true} });

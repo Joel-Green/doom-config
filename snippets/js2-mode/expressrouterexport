@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: expressrouterexport
+# key: er
+# --
+let express = require('express')
+let router = express.Router()
+
+$0
+
+module.exports=router;

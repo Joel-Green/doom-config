@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: mongoosemodel
+# key: mm
+# --
+let mongoose=require('mongoose')
+
+let $1=mongoose.Schema({
+    $0
+});
+module.exports=mongoose.model('${1:$(capitalize yas-text)}',$1)

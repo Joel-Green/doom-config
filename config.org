@@ -1,3 +1,9 @@
+
+
+
+* Random stuff i dont understand
+#+begin_src emacs-lisp
+
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
 ;; Place your private configuration here! Remember, you do not need to run 'doom
@@ -21,24 +27,40 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
+
+#+end_src
+*  Font setup
+#+begin_src emacs-lisp
+(setq doom-font (font-spec :family "SauceCodePro Nerd Font" :size 13 )
+       doom-variable-pitch-font (font-spec :family "SauceCodePro Nerd Font" :size 13))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
+#+end_src
+
+* Setting theme
+#+begin_src emacs-lisp
 (setq doom-theme 'doom-monokai-pro)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
+#+end_src
+* Setting up org directories
+#+begin_src emacs-lisp
 (setq org-directory "~/TestDev/org/")
 (setq org-super-agenda "~/TestDev/org/")
 
+#+end_src
+* display line numbers
+#+begin_src emacs-lisp
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
+#+end_src
 
-
+* just modeline things
+#+begin_src emacs-lisp
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
@@ -56,28 +78,37 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
+;;SauceCodePro Nerd Font
 (display-time-mode 1)                             ; Enable time in the mode-line
-
 (unless (equal "Battery status not available"
                (battery))
   (display-battery-mode 1))
+#+end_src
 
+
+* set scratch buffer defautl mode to org
+#+begin_src emacs-lisp
+(setq initial-major-mode 'org-mode)
+#+end_src
+
+* Coding related
+#+begin_src emacs-lisp
 
 (after! flycheck
 
-(setq flycheck-check-syntax-automatically '(mode-enabled save new-line idle-change)))
+  (setq flycheck-check-syntax-automatically '(mode-enabled save new-line idle-change)))
 
 
 
 
 (setq lsp-clients-angular-language-server-command
-  '("node"
-    "/home/shaw/.npm-global/lib/node_modules/@angular/language-server"
-    "--ngProbeLocations"
-    "/home/shaw/.npm-global/lib/node_modules"
-    "--tsProbeLocations"
-    "/home/shaw/.npm-global/lib/node_modules"
-    "--stdio"))
+      '("node"
+        "/home/shaw/.npm-global/lib/node_modules/@angular/language-server"
+        "--ngProbeLocations"
+        "/home/shaw/.npm-global/lib/node_modules"
+        "--tsProbeLocations"
+        "/home/shaw/.npm-global/lib/node_modules"
+        "--stdio"))
 
 
 (setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
@@ -91,5 +122,4 @@
               (flycheck-select-checker 'javascript-eslint))))
 
 (setq projectile-enable-caching nil)
-
-(setq initial-major-mode 'org-mode)
+#+end_src

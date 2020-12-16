@@ -2,9 +2,9 @@
 # name: router
 # key: rr
 # --
-router.${1}("/${2}", async (req, res) => {
+router.${1:$$(yas-choose-value '("get" "post" "patch" "delete" "put"))}("/${2:}", async (req, res) => {
   try {
-      ${3}
+      ${0:}
   } catch (err) {
     console.error(err);
     if (err.message) res.json({ message: err.message, data: err, success: false });

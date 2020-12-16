@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: IfthrowError
+# key: it
+# --
+if($1)
+    throw new Error($2)
+$0

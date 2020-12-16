@@ -1,0 +1,86 @@
+# -*- mode: snippet -*-
+# name: CRUD
+# key: CRUD
+# --
+// router for $1
+let express = require('express')
+let router = express.Router()
+
+let ${1:$(capitalize yas-text)} = require('../models/$1');
+
+router.get("/", async (req, res) => {
+    try {
+
+        const $1Arr = await ${1:$(capitalize yas-text)}.find().exec();
+        res.json({ message: "All Found", data: $1Arr, success: true });
+
+    } catch (err) {
+        console.error(err);
+        if (err.message) res.json({ message: err.message, data: err, success: false });
+        else res.json({ message: "Error", data: err, success: false });
+    }
+});
+
+router.get("/getById/:id", async (req, res) => {
+    try {
+
+        const $1Obj = await ${1:$(capitalize yas-text)}.findById(req.params.id).exec();
+
+        if (!$1Obj)
+            throw new Error("Not Found")
+
+        res.json({ message: "Found By Id", data: $1Obj, success: true });
+
+    } catch (err) {
+        console.error(err);
+        if (err.message) res.json({ message: err.message, data: err, success: false });
+        else res.json({ message: "Error", data: err, success: false });
+    }
+});
+
+router.post("/", async (req, res) => {
+    try {
+
+        await new ${1:$(capitalize yas-text)}(req.body).save()
+        res.json({ message: "Created", success: true });
+
+    } catch (err) {
+        console.error(err);
+        if (err.message) res.json({ message: err.message, data: err, success: false });
+        else res.json({ message: "Error", data: err, success: false });
+    }
+});
+
+
+router.patch("/updateById/:id", async (req, res) => {
+    try {
+
+        let $1Obj = await ${1:$(capitalize yas-text)}.findByIdAndUpdate(req.params.id, req.body).exec()
+        if (!$1Obj)
+            throw new Error('Not Found')
+        res.json({ message: "Updated", success: true });
+
+    } catch (err) {
+        console.error(err);
+        if (err.message) res.json({ message: err.message, data: err, success: false });
+        else res.json({ message: "Error", data: err, success: false });
+    }
+});
+
+router.delete("/deleteById/:id", async (req, res) => {
+    try {
+
+        let $1Obj = await ${1:$(capitalize yas-text)}.findByIdAndDelete(req.params.id, req.body).exec()
+        if (!$1Obj)
+            throw new Error('Not Found')
+        res.json({ message: "Deleted", success: true });
+
+    } catch (err) {
+        console.error(err);
+        if (err.message) res.json({ message: err.message, data: err, success: false });
+        else res.json({ message: "Error", data: err, success: false });
+    }
+});
+
+
+module.exports = router;
